@@ -47,6 +47,8 @@ struct ListDetailView: View {
                 }
                 .frame(height: 100)
                 
+                Spacer()
+                
                 //Dispositive Image
                 HStack{
                     

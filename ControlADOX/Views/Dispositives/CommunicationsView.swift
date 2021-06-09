@@ -18,42 +18,41 @@ struct CommunicationsView: View {
     @State var username: String = ""
     
     var body: some View {
-        
-        VStack {
-            
-            VStack(alignment: .leading) {
-                Text("Terminal input")
-                    .font(.callout)
-                    .bold()
-                HStack{
-                    TextField("Enter new command to send...", text: $username)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                    
-                    Button(action: {
-                        self.confirm = true
-                    }) {
-                        Text("Enviar")
-                    }
-                    .actionSheet(isPresented: $confirm){
-                        ActionSheet(
-                            title: Text("Sound the Alarm"),
-                            message: Text("Are you Sure?"),
-                            buttons: [
-                                .cancel(Text("Cancel")),
-                                .destructive(Text("Yes"), action: {
-                                    print("Sound the Alarm")
-                                    self.connectToUDP(hostUDP, portUDP)
-                                })
-                            ]
-                        )
-                    }
-                }
+        NavigationView{
+            VStack {
                 
-                
-            }.padding()
-            
-            
+                VStack(alignment: .leading) {
+                    Text("Terminal input")
+                        .font(.callout)
+                        .bold()
+                    HStack{
+                        TextField("Enter new command to send...", text: $username)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        
+                        Button(action: {
+                            self.confirm = true
+                        }) {
+                            Text("Enviar")
+                        }
+                        .actionSheet(isPresented: $confirm){
+                            ActionSheet(
+                                title: Text("Sound the Alarm"),
+                                message: Text("Are you Sure?"),
+                                buttons: [
+                                    .cancel(Text("Cancel")),
+                                    .destructive(Text("Yes"), action: {
+                                        print("Sound the Alarm")
+                                        self.connectToUDP(hostUDP, portUDP)
+                                    })
+                                ]
+                            )
+                        }
+                    }
+                }.padding()
+            }
         }
+        
+        
     }
     
     func connectToUDP(_ hostUDP: NWEndpoint.Host, _ portUDP: NWEndpoint.Port) {
