@@ -61,7 +61,7 @@ struct ListDetailView: View {
                             .padding(8)
                             .background(colorScheme == .dark ? Color.black : Color.white)
                             .clipShape(Circle())
-                            .offset(y: offset < 0 && -offset < 80 ? getOffset() - 20 : -20)
+                            .offset(y: offset < 0 ? getOffset() - 20 : -20)
                             .scaleEffect(getScale())
                         
                         Spacer()
@@ -78,6 +78,21 @@ struct ListDetailView: View {
                         })
                     }
                     .padding(.top, -25)
+                    .padding(.bottom, -10)
+                    
+                    VStack (alignment: .leading, spacing: 8, content: {
+                        Text("Fenotipado")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(.primary)
+                        
+                        Text("Consola de comandos")
+                            .foregroundColor(.gray)
+                        
+                        Text("Set de comandos para control de dispositivo a distancia mediante protocolo UDP.")
+                    })
+                    
+                    Divider().padding()
                 }
                 .padding(.horizontal)
                 //Moving de view back if it goes > 80...
