@@ -56,11 +56,12 @@ struct ListDetailView: View {
                         dispositive.avatar
                             .resizable()
                             .aspectRatio(contentMode: .fill)
+                            .padding(10)
                             .frame(width: 75, height: 75)
                             .padding()
                             .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                             .padding(8)
-                            .background(colorScheme == .dark ? Color.black : Color.white)
+                            .background(colorScheme == .dark ? Color.black : Color.green)
                             .clipShape(Circle())
                             .offset(y: offset < 0 ? getOffset() - 20 : -20)
                             .scaleEffect(getScale())
@@ -96,7 +97,6 @@ struct ListDetailView: View {
                     Divider().padding()
                     
                     VStack {
-                        ConnectionView()
                         CommunicationsView()
                     }
                 }
@@ -127,6 +127,7 @@ struct ListDetailView: View {
 struct ListDetailView_Previews: PreviewProvider {
     static var previews: some View {
         ListDetailView(dispositive: Dispositive(id: 0, name: "Fenotipado", description: "Consola de comandos", ip: "192.168.0.84", port: 8888, avatar: Image(systemName: "terminal.fill"), favorite: true), favorite: .constant(true))
+            
     }
 }
 

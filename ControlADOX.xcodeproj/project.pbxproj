@@ -17,7 +17,6 @@
 		C33D4719266F0D29004C0437 /* BindingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33D4718266F0D29004C0437 /* BindingView.swift */; };
 		C345AB9F266F91640078E5E7 /* EnvironmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C345AB9E266F91640078E5E7 /* EnvironmentView.swift */; };
 		C345ABA2266FB31B0078E5E7 /* Dispositive.swift in Sources */ = {isa = PBXBuildFile; fileRef = C345ABA1266FB31B0078E5E7 /* Dispositive.swift */; };
-		C345ABA5266FB97B0078E5E7 /* ConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C345ABA4266FB97B0078E5E7 /* ConnectionView.swift */; };
 		C3CC7FF8266E7ADA0067B857 /* ControlADOXApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CC7FF7266E7ADA0067B857 /* ControlADOXApp.swift */; };
 		C3CC7FFA266E7ADA0067B857 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CC7FF9266E7ADA0067B857 /* ContentView.swift */; };
 		C3CC7FFC266E7ADB0067B857 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3CC7FFB266E7ADB0067B857 /* Assets.xcassets */; };
@@ -55,7 +54,6 @@
 		C33D4718266F0D29004C0437 /* BindingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingView.swift; sourceTree = "<group>"; };
 		C345AB9E266F91640078E5E7 /* EnvironmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentView.swift; sourceTree = "<group>"; };
 		C345ABA1266FB31B0078E5E7 /* Dispositive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dispositive.swift; sourceTree = "<group>"; };
-		C345ABA4266FB97B0078E5E7 /* ConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionView.swift; sourceTree = "<group>"; };
 		C3CC7FF4266E7ADA0067B857 /* ControlADOX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ControlADOX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3CC7FF7266E7ADA0067B857 /* ControlADOXApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlADOXApp.swift; sourceTree = "<group>"; };
 		C3CC7FF9266E7ADA0067B857 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -131,7 +129,6 @@
 			isa = PBXGroup;
 			children = (
 				C33D4713266EFA48004C0437 /* ListDetailView.swift */,
-				C345ABA4266FB97B0078E5E7 /* ConnectionView.swift */,
 				C3F880192670297B00547341 /* CommunicationsView.swift */,
 			);
 			path = Dispositives;
@@ -339,7 +336,6 @@
 				C33D4717266F0C2E004C0437 /* StateView.swift in Sources */,
 				C33D470A266EEE17004C0437 /* MainView.swift in Sources */,
 				C3CC7FF8266E7ADA0067B857 /* ControlADOXApp.swift in Sources */,
-				C345ABA5266FB97B0078E5E7 /* ConnectionView.swift in Sources */,
 				C345ABA2266FB31B0078E5E7 /* Dispositive.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
