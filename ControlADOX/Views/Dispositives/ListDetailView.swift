@@ -15,6 +15,8 @@ struct ListDetailView: View {
     
     @State var offset: CGFloat = 0
     
+    @Environment (\.colorScheme) var colorScheme
+    
     var body: some View {
         ScrollView(.vertical, showsIndicators: false, content: {
             VStack(spacing: 15){
@@ -42,42 +44,63 @@ struct ListDetailView: View {
                         }
                         //Stretchy Header...
                         .frame(height: minY > 0 ? 180 + minY : nil)
-                        .offset(y: minY > 0 ? -minY : 0)
+                        .offset(y: minY > 0 ? -minY : -minY < 80 ? 0 : -minY - 80)
                     )
                 }
-                .frame(height: 100)
-                
-                Spacer()
-                
-                //Commit test
+                .frame(height: 180)
+                .zIndex(1)
                 
                 //Dispositive Image
-                HStack{
-                    
-                    dispositive.avatar
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 75, height: 75)
-                        .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
-                    
-                    Spacer()
-                    
-                    Button(action: {}, label: {
-                        Text("Edit dispositive")
-                            .foregroundColor(.blue)
-                            .padding(.vertical,10)
-                            .padding(.horizontal)
-                            .background(
-                                Capsule()
-                                    .stroke(Color.blue)
-                            )
-                    })
-                } .padding(.horizontal)
+                VStack{
+                    HStack{
+                        dispositive.avatar
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 75, height: 75)
+                            .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                            .padding(8)
+                            .background(colorScheme == .dark ? Color.black : Color.white)
+                            .clipShape(Circle())
+                            .offset(y: offset < 0 && -offset < 80 ? getOffset() - 20 : -20)
+                            .scaleEffect(getScale())
+                        
+                        Spacer()
+                        
+                        Button(action: {}, label: {
+                            Text("Edit dispositive")
+                                .foregroundColor(.blue)
+                                .padding(.vertical,10)
+                                .padding(.horizontal)
+                                .background(
+                                    Capsule()
+                                        .stroke(Color.blue, lineWidth: 1.5)
+                                )
+                        })
+                    }
+                    .padding(.top, -25)
+                }
+                .padding(.horizontal)
+                //Moving de view back if it goes > 80...
+                .zIndex(-offset > 80 ? 0 : 1)
             }
-            
         })
         .ignoresSafeArea(.all, edges: .top)
         }
+    
+    // Dispositive Shrinking Effect
+    func getOffset() -> CGFloat {
+        let progress = (-offset / 80) * 20
+        return progress <= 20 ? progress : 20
+    }
+    
+    func getScale() -> CGFloat {
+        let progress = -offset / 80
+        let scale = 1.8 - ( progress < 1.0 ? progress : 1)
+        
+        return scale < 1 ? scale : 1
+    }
+    
+    
     }
 
 struct ListDetailView_Previews: PreviewProvider {
