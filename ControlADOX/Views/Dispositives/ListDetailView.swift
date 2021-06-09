@@ -49,6 +49,8 @@ struct ListDetailView: View {
                 
                 Spacer()
                 
+                //Commit test
+                
                 //Dispositive Image
                 HStack{
                     
