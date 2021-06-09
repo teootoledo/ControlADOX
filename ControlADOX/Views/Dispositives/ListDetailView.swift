@@ -57,6 +57,7 @@ struct ListDetailView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 75, height: 75)
+                            .padding()
                             .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                             .padding(8)
                             .background(colorScheme == .dark ? Color.black : Color.white)
@@ -93,6 +94,11 @@ struct ListDetailView: View {
                     })
                     
                     Divider().padding()
+                    
+                    VStack {
+                        ConnectionView()
+                        CommunicationsView()
+                    }
                 }
                 .padding(.horizontal)
                 //Moving de view back if it goes > 80...

@@ -9,24 +9,133 @@ import SwiftUI
 import Foundation
 import Network
 var connection: NWConnection?
-var hostUDP: NWEndpoint.Host = "239.1.2.4"
-var portUDP: NWEndpoint.Port = 40001
+var hostUDP: NWEndpoint.Host = "192.168.0.205"
+var portUDP: NWEndpoint.Port = 3489
 
 struct CommunicationsView: View {
 
     @State var confirm = false
-    @State var username: String = ""
+    @State var plusY = false
+    @State var minusY = false
+    @State var plusX = false
+    @State var minusX = false
+    @State var plusZ = false
+    @State var minusZ = false
+    @State var stopMOVE = false
+    @State var command: String = ""
     
     var body: some View {
-        NavigationView{
-            VStack {
+            
+        
+        VStack {
+            HStack{
+                VStack{
+                    HStack{
+                            Button(action: {
+                                self.plusY = true
+                                self.connectToUDP(hostUDP, portUDP, message:"<ARRIBA1>")
+                            }) {
+                                Text("Y+")
+                            }
+                    }
+                    .padding()
+                    .background(
+                        Capsule()
+                            .stroke(Color.blue, lineWidth: 1.5)
+                        )
+                    
+                    HStack{
+                        Button(action: {
+                            self.minusX = true
+                            self.connectToUDP(hostUDP, portUDP, message:"<IZQUIERDA1>")
+                        }) {
+                            Text("X-")
+                        }
+                        .padding()
+                        .background(
+                            Capsule()
+                                .stroke(Color.blue, lineWidth: 1.5)
+                            )
+                        Button(action: {
+                            self.stopMOVE = true
+                            self.connectToUDP(hostUDP, portUDP, message:"<PARAR>")
+                        }) {
+                            Text("STOP")
+                        }
+                        .padding()
+                        .background(
+                            Capsule()
+                                .stroke(Color.blue, lineWidth: 1.5)
+                            )
+                        Button(action: {
+                            self.plusX = true
+                            self.connectToUDP(hostUDP, portUDP, message:"<DERECHA1>")
+                        }) {
+                            Text("X+")
+                        }
+                        .padding()
+                        .background(
+                            Capsule()
+                                .stroke(Color.blue, lineWidth: 1.5)
+                            )
+                    }
+                    HStack{
+                        Button(action: {
+                            self.minusY = true
+                            self.connectToUDP(hostUDP, portUDP, message:"<ABAJO1>")
+                        }) {
+                            Text("Y-")
+                        }
+                    }
+                    .padding()
+                    .background(
+                        Capsule()
+                            .stroke(Color.blue, lineWidth: 1.5)
+                        )
+                }
+                .padding()
+                Divider()
+                    .padding()
+                    .frame(height: 200)
+                VStack{
+                    HStack{
+                        Button(action: {
+                            self.plusZ = true
+                            self.connectToUDP(hostUDP, portUDP, message:"<SUBIR>")
+                        }) {
+                            Text("Z+")
+                        }
+                        .padding()
+                        .background(
+                            Capsule()
+                                .stroke(Color.blue, lineWidth: 1.5)
+                            )
+                    }
+                    HStack{
+                        Button(action: {
+                            self.minusZ = true
+                            self.connectToUDP(hostUDP, portUDP, message:"<BAJAR>")
+                        }) {
+                            Text("Z-")
+                        }
+                        .padding()
+                        .background(
+                            Capsule()
+                                .stroke(Color.blue, lineWidth: 1.5)
+                            )
+                    }
+                }
+                .padding()
+            }
+            
+                
                 
                 VStack(alignment: .leading) {
                     Text("Terminal input")
                         .font(.callout)
                         .bold()
                     HStack{
-                        TextField("Enter new command to send...", text: $username)
+                        TextField("Enter new command to send...", text: $command)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                         
                         Button(action: {
@@ -36,13 +145,13 @@ struct CommunicationsView: View {
                         }
                         .actionSheet(isPresented: $confirm){
                             ActionSheet(
-                                title: Text("Sound the Alarm"),
+                                title: Text("Send custom message"),
                                 message: Text("Are you Sure?"),
                                 buttons: [
                                     .cancel(Text("Cancel")),
                                     .destructive(Text("Yes"), action: {
                                         print("Sound the Alarm")
-                                        self.connectToUDP(hostUDP, portUDP)
+                                        self.connectToUDP(hostUDP, portUDP, message:command)
                                     })
                                 ]
                             )
@@ -50,14 +159,11 @@ struct CommunicationsView: View {
                     }
                 }.padding()
             }
-        }
-        
-        
     }
     
-    func connectToUDP(_ hostUDP: NWEndpoint.Host, _ portUDP: NWEndpoint.Port) {
+    func connectToUDP(_ hostUDP: NWEndpoint.Host, _ portUDP: NWEndpoint.Port, message: String) {
         // Transmited message:
-        let messageToUDP = "ALARM"
+        let messageToUDP = message
 
         connection = NWConnection(host: hostUDP, port: portUDP, using: .udp)
 
@@ -112,7 +218,7 @@ struct CommunicationsView: View {
 
 struct CommunicationsView_Previews: PreviewProvider {
     static var previews: some View {
-        CommunicationsView()
+        CommunicationsView().previewLayout(.fixed(width: 400, height: 320))
     }
 }
 

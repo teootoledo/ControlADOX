@@ -64,7 +64,6 @@ struct ConnectionView: View {
                     }
                 }
             }
-            Spacer()
             
         }
     }
