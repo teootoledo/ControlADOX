@@ -13,27 +13,23 @@ var hostUDP: NWEndpoint.Host = "192.168.0.205"
 var portUDP: NWEndpoint.Port = 3489
 
 struct CommunicationsView: View {
+    
+    var dispositive: Dispositive
 
     @State var confirm = false
-    @State var plusY = false
-    @State var minusY = false
-    @State var plusX = false
-    @State var minusX = false
-    @State var plusZ = false
-    @State var minusZ = false
-    @State var stopMOVE = false
     @State var command: String = ""
     
     var body: some View {
-            
+        
+        let IP: NWEndpoint.Host = .name(dispositive.ip, nil)
+        let PORT: NWEndpoint.Port = NWEndpoint.Port(integerLiteral: dispositive.port)
         
         VStack {
             HStack{
                 VStack{
                     HStack{
                             Button(action: {
-                                self.plusY = true
-                                self.connectToUDP(hostUDP, portUDP, message:"<ARRIBA1>")
+                                self.connectToUDP(IP, PORT, message:"<ARRIBA1>")
                             }) {
                                 Text("Y+")
                             }
@@ -46,8 +42,7 @@ struct CommunicationsView: View {
                     
                     HStack{
                         Button(action: {
-                            self.minusX = true
-                            self.connectToUDP(hostUDP, portUDP, message:"<IZQUIERDA1>")
+                            self.connectToUDP(IP, PORT, message:"<IZQUIERDA1>")
                         }) {
                             Text("X-")
                         }
@@ -57,10 +52,11 @@ struct CommunicationsView: View {
                                 .stroke(Color.blue, lineWidth: 1.5)
                             )
                         Button(action: {
-                            self.stopMOVE = true
-                            self.connectToUDP(hostUDP, portUDP, message:"<PARAR>")
+                            self.connectToUDP(IP, PORT, message:"<PARAR>")
                         }) {
                             Text("STOP")
+                                .font(.subheadline)
+                                .bold()
                         }
                         .padding()
                         .background(
@@ -68,8 +64,7 @@ struct CommunicationsView: View {
                                 .stroke(Color.blue, lineWidth: 1.5)
                             )
                         Button(action: {
-                            self.plusX = true
-                            self.connectToUDP(hostUDP, portUDP, message:"<DERECHA1>")
+                            self.connectToUDP(IP, PORT, message:"<DERECHA1>")
                         }) {
                             Text("X+")
                         }
@@ -81,8 +76,7 @@ struct CommunicationsView: View {
                     }
                     HStack{
                         Button(action: {
-                            self.minusY = true
-                            self.connectToUDP(hostUDP, portUDP, message:"<ABAJO1>")
+                            self.connectToUDP(IP, PORT, message:"<ABAJO1>")
                         }) {
                             Text("Y-")
                         }
@@ -100,8 +94,7 @@ struct CommunicationsView: View {
                 VStack{
                     HStack{
                         Button(action: {
-                            self.plusZ = true
-                            self.connectToUDP(hostUDP, portUDP, message:"<SUBIR>")
+                            self.connectToUDP(IP, PORT, message:"<SUBIR>")
                         }) {
                             Text("Z+")
                         }
@@ -113,8 +106,7 @@ struct CommunicationsView: View {
                     }
                     HStack{
                         Button(action: {
-                            self.minusZ = true
-                            self.connectToUDP(hostUDP, portUDP, message:"<BAJAR>")
+                            self.connectToUDP(hostUDP, PORT, message:"<BAJAR>")
                         }) {
                             Text("Z-")
                         }
@@ -151,7 +143,7 @@ struct CommunicationsView: View {
                                     .cancel(Text("Cancel")),
                                     .destructive(Text("Yes"), action: {
                                         print("Sound the Alarm")
-                                        self.connectToUDP(hostUDP, portUDP, message:command)
+                                        self.connectToUDP(IP, PORT, message:command)
                                     })
                                 ]
                             )
@@ -160,6 +152,7 @@ struct CommunicationsView: View {
                 }.padding()
             }
     }
+
     
     func connectToUDP(_ hostUDP: NWEndpoint.Host, _ portUDP: NWEndpoint.Port, message: String) {
         // Transmited message:
@@ -218,7 +211,7 @@ struct CommunicationsView: View {
 
 struct CommunicationsView_Previews: PreviewProvider {
     static var previews: some View {
-        CommunicationsView().previewLayout(.fixed(width: 400, height: 320))
+        CommunicationsView(dispositive: Dispositive(id: 1, name: "Nombre", description: "Descripción", color: .blue, banner: Image(""), ip: "192.168.0.205", port: 3489, control: 1, avatar: Image("user"), favorite: true)).previewLayout(.fixed(width: 400, height: 320))
     }
 }
 

@@ -9,7 +9,9 @@ import SwiftUI
 
 final class DispositiveModelData: ObservableObject {
     @Published var dispositives =
-        [  Dispositive(id: 0, name: "Fenotipado", description: "Consola de comandos", ip: "192.168.0.84", port: 8888, avatar: Image(systemName: "terminal.fill"), favorite: true),
+        [  Dispositive(id: 0, name: "Microscopio", description: "Consola de comandos", color: .blue, banner: Image("microscopioBanner"), ip: "192.168.0.205", port: 3489, control: 1, avatar: Image(systemName: "eye.circle.fill"), favorite: true),
+           Dispositive(id: 1, name: "Fenotipado", description: "Consola de comandos", color: .green, banner: Image("fenotipadoBanner"), ip: "192.168.0.84", port: 8888, control: 2, avatar: Image(systemName: "leaf.fill"), favorite: false),
+           Dispositive(id: 2, name: "Columna UV", description: "Panel de control", color: .purple, banner: Image("columnauvBanner"), ip: "192.168.0.99", port: 3434, control: 3, avatar: Image(systemName: "sun.max.fill"), favorite: false)
         ]
 }
 

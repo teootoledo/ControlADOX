@@ -12,8 +12,11 @@ struct Dispositive {
     var id: Int
     var name: String
     var description: String
+    var color: Color
+    var banner: Image
     var ip: String
-    var port: Int
+    var port: UInt16
+    var control: Int
     var avatar: Image
     var favorite: Bool
 }

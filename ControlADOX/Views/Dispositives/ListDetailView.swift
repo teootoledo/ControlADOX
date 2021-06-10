@@ -36,7 +36,7 @@ struct ListDetailView: View {
                         ZStack{
                             
                             //Banner...
-                            Image("fenotipadoBanner")
+                            dispositive.banner
                                 .resizable()
                                 .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
                                 .frame(width: getRect().width, height: minY > 0 ? 180 + minY : 180, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
@@ -61,7 +61,7 @@ struct ListDetailView: View {
                             .padding()
                             .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                             .padding(8)
-                            .background(colorScheme == .dark ? Color.black : Color.green)
+                            .background(dispositive.color)
                             .clipShape(Circle())
                             .offset(y: offset < 0 ? getOffset() - 20 : -20)
                             .scaleEffect(getScale())
@@ -83,12 +83,12 @@ struct ListDetailView: View {
                     .padding(.bottom, -10)
                     
                     VStack (alignment: .leading, spacing: 8, content: {
-                        Text("Fenotipado")
+                        Text(dispositive.name)
                             .font(.title2)
                             .fontWeight(.bold)
                             .foregroundColor(.primary)
                         
-                        Text("Consola de comandos")
+                        Text(dispositive.description)
                             .foregroundColor(.gray)
                         
                         Text("Set de comandos para control de dispositivo a distancia mediante protocolo UDP.")
@@ -97,7 +97,7 @@ struct ListDetailView: View {
                     Divider().padding()
                     
                     VStack {
-                        CommunicationsView()
+                        CommunicationsView(dispositive: dispositive)
                     }
                 }
                 .padding(.horizontal)
@@ -126,7 +126,7 @@ struct ListDetailView: View {
 
 struct ListDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ListDetailView(dispositive: Dispositive(id: 0, name: "Fenotipado", description: "Consola de comandos", ip: "192.168.0.84", port: 8888, avatar: Image(systemName: "terminal.fill"), favorite: true), favorite: .constant(true))
+        ListDetailView(dispositive: Dispositive(id: 0, name: "Fenotipado", description: "Consola de comandos", color: .green, banner: Image("fenotipadoBanner"), ip: "192.168.0.205", port: 3489, control: 1, avatar: Image(systemName: "terminal.fill"), favorite: true), favorite: .constant(true))
             
     }
 }

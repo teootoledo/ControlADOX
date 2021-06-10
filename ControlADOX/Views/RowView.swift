@@ -33,6 +33,6 @@ struct RowView: View {
 
 struct RowView_Previews: PreviewProvider {
     static var previews: some View {
-        RowView(dispositive: Dispositive(id: 0, name: "Fenotipado", description: "Consola de comandos", ip: "192.168.0.84", port: 8888, avatar: Image(systemName: "terminal.fill"), favorite: true)).previewLayout(.fixed(width: 400, height: 60))
+        RowView(dispositive: Dispositive(id: 0, name: "Fenotipado", description: "Consola de comandos", color: .blue, banner: Image("fenotipadoBanner"), ip: "192.168.0.205", port: 3489, control: 1, avatar: Image(systemName: "terminal.fill"), favorite: true)).previewLayout(.fixed(width: 400, height: 60))
     }
 }

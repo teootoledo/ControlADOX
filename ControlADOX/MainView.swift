@@ -13,6 +13,7 @@ struct MainView: View {
             VStack{
                 ContentView().frame(height: 300)
                 ImageView().offset(y: -160)
+                
             }
         }
     }
