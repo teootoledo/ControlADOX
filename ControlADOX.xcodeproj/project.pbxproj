@@ -17,13 +17,14 @@
 		C33D4719266F0D29004C0437 /* BindingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33D4718266F0D29004C0437 /* BindingView.swift */; };
 		C345AB9F266F91640078E5E7 /* EnvironmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C345AB9E266F91640078E5E7 /* EnvironmentView.swift */; };
 		C345ABA2266FB31B0078E5E7 /* Dispositive.swift in Sources */ = {isa = PBXBuildFile; fileRef = C345ABA1266FB31B0078E5E7 /* Dispositive.swift */; };
+		C3A6097D26727F6D00CCBFCD /* Controller3AxisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A6097C26727F6D00CCBFCD /* Controller3AxisView.swift */; };
+		C3A6097F2672823E00CCBFCD /* ControllerFenotipado.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A6097E2672823E00CCBFCD /* ControllerFenotipado.swift */; };
 		C3CC7FF8266E7ADA0067B857 /* ControlADOXApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CC7FF7266E7ADA0067B857 /* ControlADOXApp.swift */; };
 		C3CC7FFA266E7ADA0067B857 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CC7FF9266E7ADA0067B857 /* ContentView.swift */; };
 		C3CC7FFC266E7ADB0067B857 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3CC7FFB266E7ADB0067B857 /* Assets.xcassets */; };
 		C3CC7FFF266E7ADB0067B857 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3CC7FFE266E7ADB0067B857 /* Preview Assets.xcassets */; };
 		C3CC800A266E7ADB0067B857 /* ControlADOXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CC8009266E7ADB0067B857 /* ControlADOXTests.swift */; };
 		C3CC8015266E7ADB0067B857 /* ControlADOXUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CC8014266E7ADB0067B857 /* ControlADOXUITests.swift */; };
-		C3F8801A2670297B00547341 /* CommunicationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F880192670297B00547341 /* CommunicationsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		C33D4718266F0D29004C0437 /* BindingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingView.swift; sourceTree = "<group>"; };
 		C345AB9E266F91640078E5E7 /* EnvironmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentView.swift; sourceTree = "<group>"; };
 		C345ABA1266FB31B0078E5E7 /* Dispositive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dispositive.swift; sourceTree = "<group>"; };
+		C3A6097C26727F6D00CCBFCD /* Controller3AxisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller3AxisView.swift; sourceTree = "<group>"; };
+		C3A6097E2672823E00CCBFCD /* ControllerFenotipado.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerFenotipado.swift; sourceTree = "<group>"; };
 		C3CC7FF4266E7ADA0067B857 /* ControlADOX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ControlADOX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3CC7FF7266E7ADA0067B857 /* ControlADOXApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlADOXApp.swift; sourceTree = "<group>"; };
 		C3CC7FF9266E7ADA0067B857 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -66,7 +69,6 @@
 		C3CC8010266E7ADB0067B857 /* ControlADOXUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ControlADOXUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3CC8014266E7ADB0067B857 /* ControlADOXUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlADOXUITests.swift; sourceTree = "<group>"; };
 		C3CC8016266E7ADB0067B857 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C3F880192670297B00547341 /* CommunicationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,10 +130,19 @@
 		C345ABA3266FB8E40078E5E7 /* Dispositives */ = {
 			isa = PBXGroup;
 			children = (
+				C3A6097726727EAD00CCBFCD /* Controllers */,
 				C33D4713266EFA48004C0437 /* ListDetailView.swift */,
-				C3F880192670297B00547341 /* CommunicationsView.swift */,
 			);
 			path = Dispositives;
+			sourceTree = "<group>";
+		};
+		C3A6097726727EAD00CCBFCD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C3A6097C26727F6D00CCBFCD /* Controller3AxisView.swift */,
+				C3A6097E2672823E00CCBFCD /* ControllerFenotipado.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		C3CC7FEB266E7ADA0067B857 = {
@@ -327,13 +338,14 @@
 				C33D4704266ED7DE004C0437 /* ImageView.swift in Sources */,
 				C33D4714266EFA48004C0437 /* ListDetailView.swift in Sources */,
 				C33D4719266F0D29004C0437 /* BindingView.swift in Sources */,
+				C3A6097D26727F6D00CCBFCD /* Controller3AxisView.swift in Sources */,
 				C33D4710266EF29A004C0437 /* RowView.swift in Sources */,
 				C33D470D266EF22B004C0437 /* Programmer.swift in Sources */,
-				C3F8801A2670297B00547341 /* CommunicationsView.swift in Sources */,
 				C345AB9F266F91640078E5E7 /* EnvironmentView.swift in Sources */,
 				C33D4712266EF809004C0437 /* ListView.swift in Sources */,
 				C3CC7FFA266E7ADA0067B857 /* ContentView.swift in Sources */,
 				C33D4717266F0C2E004C0437 /* StateView.swift in Sources */,
+				C3A6097F2672823E00CCBFCD /* ControllerFenotipado.swift in Sources */,
 				C33D470A266EEE17004C0437 /* MainView.swift in Sources */,
 				C3CC7FF8266E7ADA0067B857 /* ControlADOXApp.swift in Sources */,
 				C345ABA2266FB31B0078E5E7 /* Dispositive.swift in Sources */,

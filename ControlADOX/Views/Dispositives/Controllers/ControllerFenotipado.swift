@@ -1,18 +1,15 @@
 //
-//  CommunicationsView.swift
+//  ControllerFenotipado.swift
 //  ControlADOX
 //
-//  Created by Teo Toledo on 08/06/2021.
+//  Created by Teo Toledo on 10/06/2021.
 //
 
 import SwiftUI
 import Foundation
 import Network
-var connection: NWConnection?
-var hostUDP: NWEndpoint.Host = "192.168.0.205"
-var portUDP: NWEndpoint.Port = 3489
 
-struct CommunicationsView: View {
+struct ControllerFenotipado: View {
     
     var dispositive: Dispositive
 
@@ -29,9 +26,9 @@ struct CommunicationsView: View {
                 VStack{
                     HStack{
                             Button(action: {
-                                self.connectToUDP(IP, PORT, message:"<ARRIBA1>")
+                                self.connectToUDP(IP, PORT, message:"<CONTINUAR>")
                             }) {
-                                Text("Y+")
+                                Text("CONTINUAR")
                             }
                     }
                     .padding()
@@ -42,9 +39,9 @@ struct CommunicationsView: View {
                     
                     HStack{
                         Button(action: {
-                            self.connectToUDP(IP, PORT, message:"<IZQUIERDA1>")
+                            self.connectToUDP(IP, PORT, message:"<PESAR>")
                         }) {
-                            Text("X-")
+                            Text("PESAR")
                         }
                         .padding()
                         .background(
@@ -52,63 +49,9 @@ struct CommunicationsView: View {
                                 .stroke(Color.blue, lineWidth: 1.5)
                             )
                         Button(action: {
-                            self.connectToUDP(IP, PORT, message:"<PARAR>")
+                            self.connectToUDP(IP, PORT, message:"<DETENER>")
                         }) {
-                            Text("STOP")
-                                .font(.subheadline)
-                                .bold()
-                        }
-                        .padding()
-                        .background(
-                            Capsule()
-                                .stroke(Color.blue, lineWidth: 1.5)
-                            )
-                        Button(action: {
-                            self.connectToUDP(IP, PORT, message:"<DERECHA1>")
-                        }) {
-                            Text("X+")
-                        }
-                        .padding()
-                        .background(
-                            Capsule()
-                                .stroke(Color.blue, lineWidth: 1.5)
-                            )
-                    }
-                    HStack{
-                        Button(action: {
-                            self.connectToUDP(IP, PORT, message:"<ABAJO1>")
-                        }) {
-                            Text("Y-")
-                        }
-                    }
-                    .padding()
-                    .background(
-                        Capsule()
-                            .stroke(Color.blue, lineWidth: 1.5)
-                        )
-                }
-                .padding()
-                Divider()
-                    .padding()
-                    .frame(height: 200)
-                VStack{
-                    HStack{
-                        Button(action: {
-                            self.connectToUDP(IP, PORT, message:"<SUBIR>")
-                        }) {
-                            Text("Z+")
-                        }
-                        .padding()
-                        .background(
-                            Capsule()
-                                .stroke(Color.blue, lineWidth: 1.5)
-                            )
-                    }
-                    HStack{
-                        Button(action: {
-                            self.connectToUDP(hostUDP, PORT, message:"<BAJAR>")
-                        }) {
-                            Text("Z-")
+                            Text("DETENER")
                         }
                         .padding()
                         .background(
@@ -209,9 +152,9 @@ struct CommunicationsView: View {
 }
 
 
-struct CommunicationsView_Previews: PreviewProvider {
+struct ControllerFenotipado_Previews: PreviewProvider {
     static var previews: some View {
-        CommunicationsView(dispositive: Dispositive(id: 1, name: "Nombre", description: "Descripción", color: .blue, banner: Image(""), ip: "192.168.0.205", port: 3489, control: 1, avatar: Image("user"), favorite: true)).previewLayout(.fixed(width: 400, height: 320))
+        ControllerFenotipado(dispositive: Dispositive(id: 1, name: "Nombre", description: "Descripción", color: .blue, banner: Image(""), ip: "192.168.0.205", port: 3489, control: 1, avatar: Image("user"), favorite: true)).previewLayout(.fixed(width: 400, height: 320))
     }
 }
 

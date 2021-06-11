@@ -6,6 +6,12 @@
 //
 
 import SwiftUI
+import Network
+
+var connection: NWConnection?
+var hostUDP: NWEndpoint.Host = "192.168.0.205"
+var portUDP: NWEndpoint.Port = 3489
+
 
 struct ListDetailView: View {
     
@@ -59,7 +65,7 @@ struct ListDetailView: View {
                             .padding(10)
                             .frame(width: 75, height: 75)
                             .padding()
-                            .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                            .clipShape(Circle())
                             .padding(8)
                             .background(dispositive.color)
                             .clipShape(Circle())
@@ -97,7 +103,12 @@ struct ListDetailView: View {
                     Divider().padding()
                     
                     VStack {
-                        CommunicationsView(dispositive: dispositive)
+                        if(dispositive.control == 1){
+                            Controller3AxisView(dispositive: dispositive)
+                        } else if (dispositive.control == 2){
+                            ControllerFenotipado(dispositive: dispositive)
+                        }
+                        
                     }
                 }
                 .padding(.horizontal)
