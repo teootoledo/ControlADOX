@@ -20,6 +20,7 @@ struct ListDetailView: View {
     @Binding var favorite: Bool
     
     @State var offset: CGFloat = 0
+    @State var editMode: Bool = false
     
     @Environment (\.colorScheme) var colorScheme
     
@@ -74,16 +75,35 @@ struct ListDetailView: View {
                         
                         Spacer()
                         
-                        Button(action: {}, label: {
-                            Text("Edit dispositive")
-                                .foregroundColor(.blue)
-                                .padding(.vertical,10)
-                                .padding(.horizontal)
-                                .background(
-                                    Capsule()
-                                        .stroke(Color.blue, lineWidth: 1.5)
-                                )
-                        })
+                        if(editMode){
+                            Button(action: {
+                                editMode = !editMode
+                            }, label: {
+                                Text("Save changes")
+                                    .foregroundColor(.blue)
+                                    .padding(.vertical,10)
+                                    .padding(.horizontal)
+                                    .background(
+                                        Capsule()
+                                            .stroke(Color.blue, lineWidth: 1.5)
+                                    )
+                            })
+                        } else {
+                            Button(action: {
+                                editMode = !editMode
+                            }, label: {
+                                Text("Edit dispositive")
+                                    .foregroundColor(.blue)
+                                    .padding(.vertical,10)
+                                    .padding(.horizontal)
+                                    .background(
+                                        Capsule()
+                                            .stroke(Color.blue, lineWidth: 1.5)
+                                    )
+                            })
+                        }
+                        
+                        
                     }
                     .padding(.top, -25)
                     .padding(.bottom, -10)
@@ -102,14 +122,24 @@ struct ListDetailView: View {
                     
                     Divider().padding()
                     
-                    VStack {
-                        if(dispositive.control == 1){
-                            Controller3AxisView(dispositive: dispositive)
-                        } else if (dispositive.control == 2){
-                            ControllerFenotipado(dispositive: dispositive)
+                    if(!editMode){
+                        VStack {
+                            if(dispositive.control == 1){
+                                Controller3AxisView(dispositive: dispositive)
+                            } else if (dispositive.control == 2){
+                                ControllerFenotipado(dispositive: dispositive)
+                            }
+                            
                         }
-                        
+                    } else {
+                        VStack {
+                            Text("Edit dispositive information").font(.subheadline
+                            )
+                            
+                        }
                     }
+                    
+                    
                 }
                 .padding(.horizontal)
                 //Moving de view back if it goes > 80...
